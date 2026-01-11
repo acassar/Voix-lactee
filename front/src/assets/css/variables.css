@@ -1,0 +1,9 @@
+:root {
+    --color-primary: #c4754f;
+    --color-secondary: #e4a799;
+    --color-background: #e8bcaf;
+    --color-text: #333333;
+    --font-family-base: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-size-base: 16px;
+    --spacing-base: 1rem;
+}
