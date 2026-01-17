@@ -5,15 +5,15 @@ import { FAQFetcher } from '@/services/api/faq/FAQFetcher'
 
 const questions = ref<[string, string][]>()
 
+onMounted(() => {
+  loadFAQs()
+})
+
 async function loadFAQs() {
   const response = await FAQFetcher.fetchFAQs()
   questions.value = response.data.map((e: unknown) => [e.title, e.content])
   console.log(response)
 }
-
-onMounted(() => {
-  loadFAQs()
-})
 </script>
 
 <template>

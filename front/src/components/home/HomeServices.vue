@@ -1,5 +1,20 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
 import CardComponent from '../common/CardComponent.vue'
+import { ServicesFetcher } from '@/services/api/services/ServicesFetcher'
+
+const services = ref<[string, string][]>()
+
+onMounted(() => {
+  loadServices()
+})
+
+async function loadServices() {
+  services.value = (await ServicesFetcher.fetchServices()).data.map((e: unknown) => [
+    e.title,
+    e.content,
+  ])
+}
 </script>
 
 <template>
@@ -7,16 +22,10 @@ import CardComponent from '../common/CardComponent.vue'
     <h2 class="flex text-3xl text-white">Mes services</h2>
     <div class="flex align-center services md:flex-row flex-col">
       <CardComponent
-        title="Portage"
-        content="Apprendre à porter bébé de manière sûre et confortable pour créer un lien puissant et apaisant. et trouver les moyens de portage qui vous correspondent."
-      ></CardComponent>
-      <CardComponent
-        title="Massage bébé"
-        content=" Favoriser la détente et le bien-être de bébé en apprenant des gestes simples, dans le respect de son rythme pour renforcer le lien et soulager les petits maux de bébés."
-      ></CardComponent>
-      <CardComponent
-        title="Bain enveloppé"
-        content="Découvrir une nouvelle façon de partager un moment de détente et de connexion, dans la douceur et le respect des besoins de votre bébé."
+        v-for="(service, index) in services"
+        :key="index"
+        :title="service[0]"
+        :content="service[1]"
       ></CardComponent>
     </div>
   </div>
