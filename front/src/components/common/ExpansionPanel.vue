@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 defineProps<{
   title?: string
@@ -18,7 +18,7 @@ const toggle = () => {
     <div class="cursor-pointer flex justify-between items-center" @click="toggle">
       <div>
         <h2 class="card-title" v-if="title">{{ title }}</h2>
-        <slot name="title"></slot>
+        <slot class="panel-title" name="title"></slot>
       </div>
       <span class="transition-transform duration-300" :class="{ 'rotate-180': isOpen }">▼</span>
     </div>
@@ -28,7 +28,7 @@ const toggle = () => {
     >
       <div class="mt-4">
         <p v-if="content">{{ content }}</p>
-        <slot name="content"></slot>
+        <slot class="panel-content" name="content"></slot>
       </div>
     </div>
   </div>
