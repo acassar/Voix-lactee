@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./variables.css";
+@import "./text.css";
 
 body {
   font-family: var(--font-family-base);
@@ -8,8 +9,4 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-}
-
-body .h1 {
-  color: var(--color-primary);
 }
