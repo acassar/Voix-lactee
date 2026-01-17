@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="card p-4 m-4 border rounded-[12px] shadow">
+  <div class="card border rounded-[12px] shadow">
     <div>
       <h2 class="card-title" v-if="title">{{ title }}</h2>
       <slot name="title"></slot>

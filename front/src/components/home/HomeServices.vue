@@ -5,7 +5,7 @@ import CardComponent from '../common/CardComponent.vue'
 <template>
   <div class="flex-column justify-items-center p-8 bg-[var(--color-secondary)]">
     <h2 class="flex text-3xl text-white">Mes services</h2>
-    <div class="flex align-center services">
+    <div class="flex align-center services md:flex-row flex-col">
       <CardComponent
         title="Portage"
         content="Apprendre à porter bébé de manière sûre et confortable pour créer un lien puissant et apaisant. et trouver les moyens de portage qui vous correspondent."
