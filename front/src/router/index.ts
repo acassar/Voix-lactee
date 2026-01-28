@@ -8,6 +8,16 @@ const router = createRouter({
       path: '/',
       component: () => import('@/views/HomePage.vue'),
     },
+    {
+      name: 'fetch-error',
+      path: '/error/fetch',
+      component: () => import('@/views/errors/FetchError.vue'),
+    },
+    {
+      name: '404',
+      path: '/:pathMatch(.*)*',
+      component: () => import('@/views/errors/404Error.vue'),
+    },
   ],
 })
 
