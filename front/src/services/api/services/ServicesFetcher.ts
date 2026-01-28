@@ -1,4 +1,4 @@
-import { fetcher } from '@/domain/api/Fetcher'
+import { fetcher } from '@/lib/api/Fetcher'
 
 const SERVICES_API_ENDPOINT = '/services'
 

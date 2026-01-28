@@ -18,7 +18,7 @@ async function loadServices() {
 </script>
 
 <template>
-  <div class="flex-column justify-items-center p-8 bg-[var(--color-secondary)]">
+  <div class="flex-column justify-items-center p-8 bg-[var(--color-secondary)] h-[30rem]">
     <h2 class="flex text-3xl text-white">Mes services</h2>
     <div class="flex align-center services md:flex-row flex-col">
       <CardComponent

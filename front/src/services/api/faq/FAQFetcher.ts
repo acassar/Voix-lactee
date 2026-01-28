@@ -1,4 +1,4 @@
-import { fetcher } from '@/domain/api/Fetcher'
+import { fetcher } from '@/lib/api/Fetcher'
 
 const FAQ_API_ENDPOINT = '/faq-items'
 
