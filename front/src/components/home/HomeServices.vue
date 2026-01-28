@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import CardComponent from '../common/CardComponent.vue'
-import { ServicesFetcher } from '@/services/api/services/ServicesFetcher'
+import { ServicesFetcher, type Service } from '@/services/api/services/ServicesFetcher'
+import { useFetch } from '@/composable/useFetch'
 
 const services = ref<[string, string][]>()
+const { data, fetch } = useFetch<Service[]>()
 
 onMounted(() => {
   loadServices()
 })
 
 async function loadServices() {
-  services.value = (await ServicesFetcher.fetchServices()).data.map((e: unknown) => [
-    e.title,
-    e.content,
-  ])
+  await fetch(ServicesFetcher.fetchServices)
+  services.value = data.value?.data?.map((e) => [e.title, e.content])
 }
 </script>
 

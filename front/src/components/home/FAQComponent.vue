@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import ExpansionPanel from '../common/ExpansionPanel.vue'
-import { FAQFetcher } from '@/services/api/faq/FAQFetcher'
+import { FAQFetcher, type FAQItem } from '@/services/api/faq/FAQFetcher'
+import { useFetch } from '@/composable/useFetch'
 
 const questions = ref<[string, string][]>()
+const { data, fetch } = useFetch<FAQItem[]>()
 
 onMounted(() => {
   loadFAQs()
 })
 
 async function loadFAQs() {
-  const response = await FAQFetcher.fetchFAQs()
-  questions.value = response.data.map((e: unknown) => [e.title, e.content])
-  console.log(response)
+  await fetch(FAQFetcher.fetchFAQs)
+  questions.value = data.value?.data?.map((e) => [e.title, e.content])
 }
 </script>
 
