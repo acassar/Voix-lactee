@@ -1,4 +1,5 @@
 import type { StrapiResponse } from '@/lib/api/Fetcher.type'
+import router from '@/router'
 import { ref } from 'vue'
 
 export function useFetch<T>() {
@@ -13,6 +14,7 @@ export function useFetch<T>() {
       data.value = response
     } catch (err) {
       error.value = err as Error
+      router.push({ name: 'fetch-error' })
     } finally {
       loading.value = false
     }
