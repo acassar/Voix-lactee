@@ -6,13 +6,27 @@ import TopHero from '@/components/home/TopHero.vue'
 </script>
 
 <template>
-  <div>
+  <div class="home-page">
     <TopHero />
     <WaveComponent color="var(--color-secondary)" rotate></WaveComponent>
     <HomeServices />
     <WaveComponent color="var(--color-secondary)"></WaveComponent>
-    <FAQComponent />
+    <div class="faq-section">
+      <FAQComponent />
+    </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.home-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.faq-section {
+  background-color: var(--color-background);
+  padding: 2rem 0;
+  flex: 1;
+}
+</style>

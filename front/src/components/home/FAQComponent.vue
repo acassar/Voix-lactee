@@ -18,25 +18,41 @@ async function loadFAQs() {
 </script>
 
 <template>
-  <div class="mx-20 py-20 xl:px-80 lg:px-40 flex-col justify-items-center">
-    <h2>Questions fréquentes</h2>
+  <div class="bg-[var(--color-background)] p-12 md:p-8 sm:p-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex flex-col items-center mb-12">
+        <h2
+          class="text-3xl md:text-2xl sm:text-xl text-[var(--color-primary)] font-bold text-center m-0"
+        >
+          Questions fréquentes
+        </h2>
+        <div class="w-24 h-1 bg-[var(--color-primary)] rounded mt-4"></div>
+      </div>
 
-    <ExpansionPanel class="m-2 panel" v-for="question in questions" :key="question[0]">
-      <template #title>
-        <h4 class="pb-3 text-black! flex title">{{ question[0] }}</h4>
-      </template>
-      <template #content>
-        <p>
-          {{ question[1] }}
-        </p>
-      </template>
-    </ExpansionPanel>
+      <div class="flex flex-col gap-4 md:gap-3">
+        <ExpansionPanel
+          class="w-full bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+          v-for="question in questions"
+          :key="question[0]"
+        >
+          <template #title>
+            <h4
+              class="text-[var(--color-primary)] font-semibold m-0 p-4 md:p-3 md:text-base sm:text-sm"
+            >
+              {{ question[0] }}
+            </h4>
+          </template>
+          <template #content>
+            <p
+              class="text-[var(--color-text)] leading-relaxed p-0 px-4 pb-4 md:px-3 md:pb-3 sm:text-sm m-0"
+            >
+              {{ question[1] }}
+            </p>
+          </template>
+        </ExpansionPanel>
+      </div>
+    </div>
   </div>
 </template>
 
-<style scoped>
-.panel {
-  flex: 1 1 100%;
-  width: 100%;
-}
-</style>
+<style scoped></style>

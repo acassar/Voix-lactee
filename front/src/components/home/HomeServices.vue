@@ -18,27 +18,28 @@ async function loadServices() {
 </script>
 
 <template>
-  <div class="flex-column justify-items-center p-8 bg-[var(--color-secondary)] h-[30rem]">
-    <h2 class="flex text-3xl text-white">Mes services</h2>
-    <div class="flex align-center services md:flex-row flex-col">
-      <CardComponent
-        v-for="(service, index) in services"
-        :key="index"
-        :title="service[0]"
-        :content="service[1]"
-      ></CardComponent>
+  <div
+    class="bg-[var(--color-secondary)] p-12 md:p-8 sm:p-6 min-h-[550px] md:min-h-auto flex items-center"
+  >
+    <div class="max-w-6xl mx-auto w-full">
+      <div class="flex flex-col items-center mb-12">
+        <h2 class="text-3xl md:text-2xl sm:text-xl text-white font-bold text-center m-0">
+          Mes services
+        </h2>
+        <div class="w-24 h-1 bg-white rounded mt-4"></div>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-8 md:gap-6 sm:gap-4">
+        <div
+          v-for="(service, index) in services"
+          :key="index"
+          class="w-[280px] flex justify-center"
+        >
+          <CardComponent :title="service[0]" :content="service[1]" class="w-full" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
-<style scoped>
-.services {
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.services .card {
-  flex: 1;
-  margin: 10px;
-}
-</style>
+<style scoped></style>
