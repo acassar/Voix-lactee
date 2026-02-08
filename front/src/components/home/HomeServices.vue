@@ -24,7 +24,7 @@ async function loadServices() {
     <div class="max-w-6xl mx-auto w-full">
       <div class="flex flex-col items-center mb-12">
         <h2 class="text-3xl md:text-2xl sm:text-xl text-white font-bold text-center m-0">
-          Mes services
+          {{ $t('services.title') }}
         </h2>
         <div class="w-24 h-1 bg-white rounded mt-4"></div>
       </div>

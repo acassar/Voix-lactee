@@ -1,0 +1,15 @@
+{
+  "global": {
+    "site_name": "Voix Lactée"
+  },
+  "hero": {
+    "title": "Voix Lactée",
+    "description": "Bienvenue dans cet espace dédié à la parentalité et au lien avec votre bébé. Je vous accompagne avec douceur et bienveillance à chaque étape, pour que ces premiers moments de vie soient sereins, précieux et remplis de connexion."
+  },
+  "services": {
+    "title": "Mes services"
+  },
+  "faq": {
+    "title": "Questions fréquentes"
+  }
+}

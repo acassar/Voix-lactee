@@ -24,7 +24,7 @@ async function loadFAQs() {
         <h2
           class="text-3xl md:text-2xl sm:text-xl text-[var(--color-primary)] font-bold text-center m-0"
         >
-          Questions fréquentes
+          {{ $t('faq.title') }}
         </h2>
         <div class="w-24 h-1 bg-[var(--color-primary)] rounded mt-4"></div>
       </div>

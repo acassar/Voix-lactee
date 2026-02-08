@@ -7,14 +7,12 @@
         <h1
           class="mb-6 text-4xl md:text-3xl sm:text-2xl text-[var(--color-primary)] font-bold leading-tight"
         >
-          Voix Lactée
+          {{ $t('hero.title') }}
         </h1>
         <p
           class="text-lg md:text-base sm:text-sm text-[var(--color-text)] leading-relaxed font-medium"
         >
-          Bienvenue dans cet espace dédié à la parentalité et au lien avec votre bébé. Je vous
-          accompagne avec douceur et bienveillance à chaque étape, pour que ces premiers moments de
-          vie soient sereins, précieux et remplis de connexion.
+          {{ $t('hero.description') }}
         </p>
       </div>
       <div
