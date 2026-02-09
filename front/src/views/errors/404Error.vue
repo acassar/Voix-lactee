@@ -1,14 +1,32 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="flex flex-col items-center justify-center h-full">
-    <h1>404 - Page introuvable</h1>
-    <p>La page que vous cherchez n'existe pas.</p>
-    <img
-      src="@/assets/images/404.svg"
-      class="w-[300px] mt-5 border rounded-[60px]"
-      alt="Image d'illustration"
-    />
+  <div class="flex flex-col items-center justify-center h-full min-h-screen bg-[var(--color-background)] px-4">
+    <div class="text-center max-w-2xl">
+      <div class="mb-8">
+        <span class="text-8xl md:text-9xl font-bold text-[var(--color-secondary)] opacity-20">404</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-4">
+        {{ $t('error.not_found_title') }}
+      </h1>
+      <p class="text-lg md:text-xl text-[var(--color-text)] mb-8 leading-relaxed">
+        {{ $t('error.not_found_description') }}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <router-link
+          to="/"
+          class="px-6 py-3 bg-[var(--color-primary)] text-white font-semibold rounded-lg hover:opacity-90 transition"
+        >
+          {{ $t('error.back_home') }}
+        </router-link>
+        <button
+          @click="$router.back()"
+          class="px-6 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] font-semibold rounded-lg hover:bg-[var(--color-primary)]/10 transition"
+        >
+          {{ $t('error.go_back') }}
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
