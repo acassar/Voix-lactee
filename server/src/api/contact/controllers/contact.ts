@@ -18,6 +18,27 @@ export default factories.createCoreController(
       }
 
       try {
+        // Protection anti-spam : vérifier si un message du même email existe dans les 5 dernières minutes
+        const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
+
+        const recentMessages = await strapi
+          .documents("api::contact.contact")
+          .findMany({
+            filters: {
+              email: email,
+              createdAt: {
+                $gte: fiveMinutesAgo.toISOString(),
+              },
+            },
+            limit: 1,
+          });
+
+        if (recentMessages && recentMessages.length > 0) {
+          return ctx.badRequest(
+            "You have already sent a message recently. Please wait a few minutes before sending another one.",
+          );
+        }
+
         // Enregistre le contact dans la base de données
         const entry = await strapi.documents("api::contact.contact").create({
           data: {

@@ -38,6 +38,14 @@ const submitForm = async () => {
     })
 
     if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}))
+      const serverMessage = errorData?.error?.message || errorData?.message
+
+      if (response.status === 429) {
+        throw new Error('Trop de requêtes. Veuillez patienter quelques minutes.')
+      } else if (serverMessage) {
+        throw new Error(serverMessage)
+      }
       throw new Error('Failed to submit form')
     }
 
@@ -48,7 +56,7 @@ const submitForm = async () => {
     form.message = ''
     successMessage.value = t('contact.success')
   } catch (error) {
-    errorMessage.value = t('contact.error')
+    errorMessage.value = error instanceof Error ? error.message : t('contact.error')
     console.error('Form submission error:', error)
   } finally {
     isSubmitting.value = false
