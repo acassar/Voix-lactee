@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import ExpansionPanel from '../common/ExpansionPanel.vue'
+import LoadingSpinner from '../common/LoadingSpinner.vue'
+import ErrorAlert from '../common/ErrorAlert.vue'
 import { FAQFetcher, type FAQItem } from '@/services/api/faq/FAQFetcher'
 import { useFetch } from '@/composable/useFetch'
 
 const questions = ref<[string, string][]>()
-const { data, fetch } = useFetch<FAQItem[]>()
+const { data, error, loading, fetch } = useFetch<FAQItem[]>()
 
 onMounted(() => {
   loadFAQs()
@@ -29,7 +31,14 @@ async function loadFAQs() {
         <div class="w-24 h-1 bg-[var(--color-primary)] rounded mt-4"></div>
       </div>
 
-      <div class="flex flex-col gap-4 md:gap-3">
+      <!-- Loading State -->
+      <LoadingSpinner v-if="loading" />
+
+      <!-- Error State -->
+      <ErrorAlert v-else-if="error" title="Erreur lors du chargement des FAQ" :message="error" />
+
+      <!-- FAQ List -->
+      <div v-else class="flex flex-col gap-4 md:gap-3">
         <ExpansionPanel
           class="w-full bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
           v-for="question in questions"

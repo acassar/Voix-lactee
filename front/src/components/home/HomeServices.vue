@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import CardComponent from '../common/CardComponent.vue'
+import LoadingSpinner from '../common/LoadingSpinner.vue'
+import ErrorAlert from '../common/ErrorAlert.vue'
 import { ServicesFetcher, type Service } from '@/services/api/services/ServicesFetcher'
 import { useFetch } from '@/composable/useFetch'
 
 const services = ref<[string, string][]>()
-const { data, fetch } = useFetch<Service[]>()
+const { data, error, loading, fetch } = useFetch<Service[]>()
 
 onMounted(() => {
   loadServices()
@@ -29,7 +31,18 @@ async function loadServices() {
         <div class="w-24 h-1 bg-[var(--color-primary)] rounded mt-4"></div>
       </div>
 
-      <div class="flex flex-wrap justify-center gap-8 md:gap-6 sm:gap-4">
+      <!-- Loading State -->
+      <LoadingSpinner v-if="loading" />
+
+      <!-- Error State -->
+      <ErrorAlert
+        v-else-if="error"
+        title="Erreur lors du chargement des services"
+        :message="error"
+      />
+
+      <!-- Services List -->
+      <div v-else class="flex flex-wrap justify-center gap-8 md:gap-6 sm:gap-4">
         <div
           v-for="(service, index) in services"
           :key="index"
