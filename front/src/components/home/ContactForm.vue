@@ -5,8 +5,6 @@ import FormField from '../common/FormField.vue'
 
 const { t } = useI18n()
 
-const MAIL = import.meta.env.VITE_MAIL_SENDER
-
 const form = reactive({
   name: '',
   email: '',
@@ -24,33 +22,31 @@ const submitForm = async () => {
   errorMessage.value = ''
 
   try {
-    // TODO: Replace with actual Strapi endpoint
-    // const response = await fetch('/api/contacts', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     name: form.name,
-    //     email: form.email,
-    //     phone: form.phone || null,
-    //     message: form.message
-    //   })
-    // })
-    // if (!response.ok) throw new Error('Failed to submit form')
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:1337/api'
 
-    // For now, fallback to mailto
-    const mailtoLink = `mailto:${MAIL}?subject=Nouveau%20message%20de%20${encodeURIComponent(form.name)}&body=${encodeURIComponent(
-      `Nom: ${form.name}\nEmail: ${form.email}\nTéléphone: ${form.phone || 'Non fourni'}\n\nMessage:\n${form.message}`,
-    )}`
-    window.location.href = mailtoLink
+    const response = await fetch(`${API_URL}/contacts`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        data: {
+          name: form.name,
+          email: form.email,
+          phone: form.phone || null,
+          message: form.message,
+        },
+      }),
+    })
 
-    // Reset form after delay
-    setTimeout(() => {
-      form.name = ''
-      form.email = ''
-      form.phone = ''
-      form.message = ''
-      successMessage.value = t('contact.success')
-    }, 1000)
+    if (!response.ok) {
+      throw new Error('Failed to submit form')
+    }
+
+    // Success: reset form and show message
+    form.name = ''
+    form.email = ''
+    form.phone = ''
+    form.message = ''
+    successMessage.value = t('contact.success')
   } catch (error) {
     errorMessage.value = t('contact.error')
     console.error('Form submission error:', error)
