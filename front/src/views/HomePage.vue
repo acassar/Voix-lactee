@@ -4,6 +4,7 @@ import FAQComponent from '@/components/home/FAQComponent.vue'
 import HomeServices from '@/components/home/HomeServices.vue'
 import TopHero from '@/components/home/TopHero.vue'
 import ContactForm from '@/components/home/ContactForm.vue'
+import Footer from '@/components/common/Footer.vue'
 </script>
 
 <template>
@@ -18,6 +19,7 @@ import ContactForm from '@/components/home/ContactForm.vue'
     <!-- <WaveComponent color="var(--color-secondary)" rotate></WaveComponent>
     <WaveComponent color="var(--color-secondary)"></WaveComponent> -->
     <ContactForm />
+    <Footer />
   </div>
 </template>
 

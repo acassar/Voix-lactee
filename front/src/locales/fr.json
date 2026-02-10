@@ -1,4 +1,7 @@
 {
+  "app": {
+    "name": "Voix Lactée"
+  },
   "global": {
     "site_name": "Voix Lactée"
   },
@@ -38,5 +41,9 @@
     "submitting": "Envoi en cours...",
     "success": "Message envoyé avec succès ! Merci de m'avoir contacté.",
     "error": "Erreur lors de l'envoi du message. Veuillez réessayer."
+  },
+  "footer": {
+    "question": "Pour toute question : contact@voixlactee.fr",
+    "contact_admin": "Administrateur : contact@voixlactee.fr"
   }
 }

@@ -11,6 +11,10 @@ defineProps<{
     <p v-if="title" class="text-[#d9534f] font-semibold m-0 mb-2">{{ title }}</p>
     <!-- Message -->
     <p class="text-[#8a3933] text-sm leading-relaxed m-0">{{ message }}</p>
+    <!-- Contact Info -->
+    <p class="text-[#8a3933] text-xs leading-relaxed m-0 mt-3 opacity-80">
+      Si le problème persiste, veuillez contacter l'administrateur.
+    </p>
   </div>
 </template>
 
