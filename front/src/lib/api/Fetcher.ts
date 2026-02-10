@@ -1,5 +1,9 @@
 import { waitUntilCanRequest, recordRequest, getCachedData, setCachedData } from './RateLimit'
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:1337/api'
+
+console.log('[Fetcher] API Base URL:', API_BASE_URL)
+
 export interface Fetcher {
   get: (url: string, options?: RequestInit & { cache?: boolean }) => Promise<Response>
   post: (url: string, body?: Record<string, unknown>, options?: RequestInit) => Promise<Response>
@@ -7,7 +11,7 @@ export interface Fetcher {
 
 export const fetcher: Fetcher = {
   get: async (url: string, options: RequestInit & { cache?: boolean } = {}) => {
-    const fullUrl = `${import.meta.env.VITE_API_URL}${url}`
+    const fullUrl = `${API_BASE_URL}${url}`
     const { cache: useCache = true, ...fetchOptions } = options
 
     // Check cache first
@@ -41,7 +45,7 @@ export const fetcher: Fetcher = {
   },
 
   post: async (url: string, body: Record<string, unknown> = {}, options: RequestInit = {}) => {
-    const fullUrl = `${import.meta.env.VITE_API_URL}${url}`
+    const fullUrl = `${API_BASE_URL}${url}`
 
     // Apply rate limiting (stricter for POST)
     await waitUntilCanRequest(fullUrl)
