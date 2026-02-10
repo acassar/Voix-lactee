@@ -2,10 +2,11 @@
 import { ref, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 import FormField from '../common/FormField.vue'
+import { ContactFetcher, type ContactPayload } from '@/services/api/contact/ContactFetcher'
 
 const { t } = useI18n()
 
-const form = reactive({
+const form = reactive<ContactPayload>({
   name: '',
   email: '',
   phone: '',
@@ -22,32 +23,12 @@ const submitForm = async () => {
   errorMessage.value = ''
 
   try {
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:1337/api'
-
-    const response = await fetch(`${API_URL}/contacts`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        data: {
-          name: form.name,
-          email: form.email,
-          phone: form.phone || null,
-          message: form.message,
-        },
-      }),
+    await ContactFetcher.submitContact({
+      name: form.name,
+      email: form.email,
+      phone: form.phone || null,
+      message: form.message,
     })
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}))
-      const serverMessage = errorData?.error?.message || errorData?.message
-
-      if (response.status === 429) {
-        throw new Error('Trop de requêtes. Veuillez patienter quelques minutes.')
-      } else if (serverMessage) {
-        throw new Error(serverMessage)
-      }
-      throw new Error('Failed to submit form')
-    }
 
     // Success: reset form and show message
     form.name = ''
