@@ -3,6 +3,7 @@ import WaveComponent from '@/components/common/style/WaveComponent.vue'
 import FAQComponent from '@/components/home/FAQComponent.vue'
 import HomeServices from '@/components/home/HomeServices.vue'
 import TopHero from '@/components/home/TopHero.vue'
+import ContactForm from '@/components/home/ContactForm.vue'
 </script>
 
 <template>
@@ -14,6 +15,9 @@ import TopHero from '@/components/home/TopHero.vue'
     <div class="faq-section">
       <FAQComponent />
     </div>
+    <!-- <WaveComponent color="var(--color-secondary)" rotate></WaveComponent>
+    <WaveComponent color="var(--color-secondary)"></WaveComponent> -->
+    <ContactForm />
   </div>
 </template>
 

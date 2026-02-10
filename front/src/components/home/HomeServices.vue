@@ -26,7 +26,7 @@ async function loadServices() {
         <h2 class="text-3xl md:text-2xl sm:text-xl text-white font-bold text-center m-0">
           {{ $t('services.title') }}
         </h2>
-        <div class="w-24 h-1 bg-white rounded mt-4"></div>
+        <div class="w-24 h-1 bg-[var(--color-primary)] rounded mt-4"></div>
       </div>
 
       <div class="flex flex-wrap justify-center gap-8 md:gap-6 sm:gap-4">
