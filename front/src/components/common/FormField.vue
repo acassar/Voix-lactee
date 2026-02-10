@@ -5,7 +5,7 @@ const props = withDefaults(
   defineProps<{
     id: string
     label: string
-    modelValue: string
+    modelValue: string | undefined | null
     type?: string
     placeholder?: string
     required?: boolean
