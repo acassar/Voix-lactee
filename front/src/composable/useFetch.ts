@@ -11,6 +11,14 @@ export function useFetch<T>() {
     error.value = null
     try {
       const response = await fetcherFunction()
+      if (response && 'error' in response) {
+        if (response.error?.status === 403)
+          throw new Error(
+            "Accès refusé. Vous n'avez pas les permissions nécessaires pour accéder à ces données.",
+          )
+        console.error('[useFetch] API Error:', response.error)
+        throw new Error('Erreur lors de la récupération des données')
+      }
       data.value = response
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Une erreur est survenue'
