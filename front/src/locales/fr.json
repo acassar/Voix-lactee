@@ -11,5 +11,32 @@
   },
   "faq": {
     "title": "Questions fréquentes"
+  },
+  "error": {
+    "not_found_title": "Page introuvable",
+    "not_found_description": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "fetch_error_title": "Erreur de récupération",
+    "fetch_error_description": "Une erreur s'est produite lors du chargement des données.",
+    "fetch_error_help": "Veuillez rafraîchir la page ou revenir à l'accueil. Si le problème persiste, contactez l'administrateur.",
+    "back_home": "Accueil",
+    "go_back": "Retour",
+    "refresh_page": "Rafraîchir"
+  },
+  "contact": {
+    "title": "Contactez-moi",
+    "description": "Une question ou besoin d'aide ? N'hésitez pas à me contacter, je vous répondrai dans les plus brefs délais.",
+    "name": "Nom",
+    "name_placeholder": "Votre nom",
+    "email": "Email",
+    "email_placeholder": "votre.email@exemple.com",
+    "phone": "Téléphone",
+    "phone_placeholder": "+33 6 XX XX XX XX",
+    "message": "Message",
+    "message_placeholder": "Votre message...",
+    "optional": "optionnel",
+    "submit": "Envoyer",
+    "submitting": "Envoi en cours...",
+    "success": "Message envoyé avec succès ! Merci de m'avoir contacté.",
+    "error": "Erreur lors de l'envoi du message. Veuillez réessayer."
   }
 }

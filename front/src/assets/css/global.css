@@ -10,3 +10,7 @@ body {
   padding: 0;
   height: 100vh;
 }
+
+button {
+  cursor: pointer !important;
+}
