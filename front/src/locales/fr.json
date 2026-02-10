@@ -17,7 +17,7 @@
     "not_found_description": "La page que vous cherchez n'existe pas ou a été déplacée.",
     "fetch_error_title": "Erreur de récupération",
     "fetch_error_description": "Une erreur s'est produite lors du chargement des données.",
-    "fetch_error_help": "Veuillez rafraîchir la page ou revenir à l'accueil. Si le problème persiste, contactez l'administrateur.",
+    "fetch_error_help": "Veuillez revenir à l'accueil. Si le problème persiste, contactez l'administrateur.",
     "back_home": "Accueil",
     "go_back": "Retour",
     "refresh_page": "Rafraîchir"

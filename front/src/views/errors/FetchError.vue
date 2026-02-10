@@ -1,8 +1,4 @@
-<script setup lang="ts">
-const handleRefresh = () => {
-  window.location.reload()
-}
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div
@@ -24,12 +20,6 @@ const handleRefresh = () => {
         {{ $t('error.fetch_error_help') }}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <button
-          @click="handleRefresh"
-          class="px-6 py-3 bg-[var(--color-primary)] text-white font-semibold rounded-lg hover:opacity-90 transition"
-        >
-          {{ $t('error.refresh_page') }}
-        </button>
         <router-link
           to="/"
           class="px-6 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] font-semibold rounded-lg hover:bg-[var(--color-primary)]/10 transition"
