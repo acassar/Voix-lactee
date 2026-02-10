@@ -26,6 +26,11 @@
     "message": {
       "type": "text",
       "required": true
+    },
+    "Answered": {
+      "type": "boolean",
+      "private": true,
+      "default": false
     }
   }
 }

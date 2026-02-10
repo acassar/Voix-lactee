@@ -575,6 +575,9 @@ export interface ApiContactContact extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    Answered: Schema.Attribute.Boolean &
+      Schema.Attribute.Private &
+      Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
