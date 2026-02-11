@@ -16,8 +16,6 @@ import Footer from '@/components/common/Footer.vue'
     <div class="faq-section">
       <FAQComponent />
     </div>
-    <!-- <WaveComponent color="var(--color-secondary)" rotate></WaveComponent>
-    <WaveComponent color="var(--color-secondary)"></WaveComponent> -->
     <ContactForm />
     <Footer />
   </div>
